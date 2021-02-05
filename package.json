@@ -1,6 +1,6 @@
 {
   "name": "password-pwnd",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Check if your users passwords have been leaked before and check if they are strong enough",
   "main": "index.js",
   "scripts": {
