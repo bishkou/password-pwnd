@@ -2,8 +2,6 @@
 const crypto = require('crypto');
 const fetch = require('node-fetch');
 
-console.log('aaaaaaaaaaaa')
-// YOU SHOULD ADD THE STENGHT FEATURE
 
 const pwnd = async (password) => {
     password = password.trim()
@@ -31,12 +29,6 @@ const pwnd = async (password) => {
 }
 
 
-// check("password").then(data => {
-//     console.log(data)
-// })
-
 module.exports = {
     pwnd: pwnd
 }
-
-// YOU SHOULD ADD THE STENGHT FEATURE
