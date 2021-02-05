@@ -27,7 +27,7 @@ npm i password-pwnd
 ## Check if the password have been leaked before
 
 ```js
-// pwnd checks if the password your provided has been found in previous leaks or not
+// pwnd checks if the password your provided has been found in previous leaks
 const { pwnd } = require('password-pwnd')
 
 check = async () => {
@@ -44,7 +44,7 @@ check = async () => {
 }
 
 ```
-## Catching Erros
+## Catching Errors
 ```js
 // I Highly recommend you try to catch errors since we are making
 // a call to an API and it can fail at any given moment
@@ -73,7 +73,9 @@ Give a STAR if this project helped you!
 
 * All thanks to HIBP API.
 * Their API provides 613,584,246 real world passwords previously exposed in data breaches.
-[HIBP API](https://haveibeenpwned.com/API/v3)
+* LINK: [HIBP API](https://haveibeenpwned.com/API/v3)
+
+
 ## 📝 License
 
 * Copyright © 2021 [Chedy](https://github.com/bishkou).
