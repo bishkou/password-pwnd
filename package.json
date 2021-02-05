@@ -1,5 +1,5 @@
 {
-  "name": "password-check",
+  "name": "password-pwnd",
   "version": "1.0.0",
   "description": "Check if your users passwords have been leaked before and check if they are strong enough",
   "main": "index.js",
@@ -14,12 +14,16 @@
     "secure"
   ],
   "author": "Chedy",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "node-fetch": "^2.6.1"
   },
   "repository": {
     "type": "git",
-    "url": "git"
-  }
+    "url": "git+https://github.com/bishkou/password-checker"
+  },
+  "bugs": {
+    "url": "https://github.com/bishkou/password-checker/issues"
+  },
+  "homepage": "https://github.com/bishkou/password-checker"
 }
