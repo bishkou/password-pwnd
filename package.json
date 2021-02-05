@@ -1,0 +1,25 @@
+{
+  "name": "password-check",
+  "version": "1.0.0",
+  "description": "Check if your users passwords have been leaked before and check if they are strong enough",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "password",
+    "password check",
+    "password strong",
+    "pwnd",
+    "secure"
+  ],
+  "author": "Chedy",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git"
+  }
+}
