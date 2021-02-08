@@ -23,7 +23,6 @@ const pwnd = async (password) => {
             return Promise.reject('Failed to fetch HIBP API')
         })
 
-
     if (data) {
         const re = new RegExp(tail + ':(\\d+)');
         const match = data.match(re);
@@ -35,8 +34,6 @@ const pwnd = async (password) => {
     }
     return Promise.reject('Something went wrong')
 
-
-
 }
 
 const strong = (password) => {
@@ -46,13 +43,33 @@ const strong = (password) => {
     const strongReg = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
     const match = password.match(strongReg);
 
-    return match ? 0 : 1
+    return match ? 1 : 0
+
+}
+
+const super_strong = async (password) => {
+
+    const leaked = await pwnd(password)
+        .catch(() => {
+            console.warn('Something went wrong while fetching data from the API, PWND check didn\'t work as expected ' +
+                'the strong password Check will now start')
+        })
+
+    if (!leaked) {
+        const strength = await strong(password)
+        if (strength) {
+            return true
+        }
+    }
+    return false
+
 
 }
 
 
 module.exports = {
     pwnd: pwnd,
-    strong: strong
+    strong: strong,
+    super_strong: super_strong
 
 }
