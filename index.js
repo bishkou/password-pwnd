@@ -4,7 +4,10 @@ const fetch = require('node-fetch');
 
 
 const pwnd = async (password) => {
-    // Delete any spaces from the sides
+    if (typeof password !== 'string') {
+        return Promise.reject('You must provide a string as an argument')
+    }
+    // Delete any spaces from both sides
     password = password.trim()
 
     // Hash the password
@@ -37,6 +40,10 @@ const pwnd = async (password) => {
 }
 
 const strong = (password) => {
+    if (typeof password !== 'string') {
+        return Promise.reject('You must provide a string as an argument')
+    }
+
     password = password.trim()
 
     // RegEx of a strong password
@@ -48,6 +55,11 @@ const strong = (password) => {
 }
 
 const super_strong = async (password) => {
+    if (typeof password !== 'string') {
+        return Promise.reject('You must provide a string as an argument')
+    }
+
+    password = password.trim()
 
     const leaked = await pwnd(password)
         .catch(() => {
