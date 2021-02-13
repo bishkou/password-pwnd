@@ -31,28 +31,30 @@ npm i password-pwnd
 ## Check if a Password has been Leaked Before
 
 ```js
-// pwnd checks if the password your provided has been found in previous leaks
+/** pwnd checks if the password your provided has been found in previous leaks **/
 
 const { pwnd } = require('password-pwnd')
 
 check = async () => {
-    /* 
+    /** 
      Make sure to use the await syntax since we're fetching
     data from an API and it can take a second to get the result
-    */
+    **/
     const leaked = await pwnd('password123')
 
     // if the value is 0
     if (!leaked) {
         console.log('You Are Good To Go')
-    /* if you want to get the count of how many times the password
-     have been found in previous breaches
-    */
-        console.log(`Password found ${leaked} times`)
-
     }
     // if the value is different from 0
-    else  console.log('Please change your password, it has been found in a previous breach')
+    else {
+        console.log('Please change your password, it has been found in a previous breach')
+   
+        /** if you want to get the count of how many times the
+        password have been found in previous breaches **/
+        console.log(`Password found ${leaked} times`)
+
+    }  
 
 }
 
@@ -68,9 +70,9 @@ is a good **INDICATOR** that the password is somewhat **SECURE**
 
 ## Catching Errors
 ```js
-/* I Highly recommend you try to catch errors since we are making
- a call to an API and it can fail at any given moment
-    */
+/** It is highly recommend you try to catch errors since we are making
+ a call to an API and it can fail at any given moment **/
+
 const leaked = await pwnd('password')
     .catch(err => {
         console.log(err)
@@ -80,8 +82,8 @@ const leaked = await pwnd('password')
 ## Check if Your Password is Strong Enough
 
 ```js
-/* strong checks if your password has
- the requirements of a strong password */
+/** strong checks if your password has
+ the requirements of a strong password **/
 
 const { strong } = require('password-pwnd')
 
@@ -95,10 +97,10 @@ check = async () => {
     else  console.log('You Are Good To Go')
 
 }
-/*
+/**
 The Password must contain at least 1 lowercase** and 1 uppercase alphabetical character,
  at least 1 numeric character**, at least 1 special character and it must be 8 characters or longer.
- */
+ **/
 
 ```
 **STRONG** :
@@ -106,11 +108,11 @@ The Password must contain at least 1 lowercase** and 1 uppercase alphabetical ch
  The Password must contain at least **1 lowercase** and **1 uppercase** alphabetical character,
  at least **1 numeric character**, at least **1 special character** and it must be **8 characters or longer**.
  
-## Check if Your Password is Strong Enough
+## Check if Your Password is Strong and hasn't been leaked
 
 ```js
-/* super_strong checks the password against both
- previous functions */
+/** super_strong checks the password against both
+ previous functions **/
 
 const { super_strong } = require('password-pwnd')
 
@@ -124,11 +126,11 @@ check = async () => {
     else  console.log('You Are Good To Go')
 
 }
-/*
+/**
 The Password gets checked against both PWND and STRONG functions,
 if the PWND API call fails for some reason only the STRONG function gets
 executed, and you will get a WARNING in the console
- */
+ **/
 
 ```
 **SUPER_STRONG** :

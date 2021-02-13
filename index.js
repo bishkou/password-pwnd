@@ -3,6 +3,12 @@ const crypto = require('crypto');
 const fetch = require('node-fetch');
 
 
+/**
+ * Check if a password has appeared in any data breach
+ * using hibp (https://haveibeenpwned.com/Passwords) API
+ * @param {string} password - The password to check
+ * @returns {Promise<Object>} returns a promise with the result
+ */
 const pwnd = async (password) => {
     if (typeof password !== 'string') {
         return Promise.reject('You must provide a string as an argument')
@@ -22,8 +28,8 @@ const pwnd = async (password) => {
     // HIBP API call
     const data = await fetch(url)
         .then(res => res.text())
-        .catch( () => {
-            return Promise.reject('Failed to fetch HIBP API')
+        .catch( (err) => {
+            return Promise.reject(err)
         })
 
     if (data) {
@@ -39,9 +45,17 @@ const pwnd = async (password) => {
 
 }
 
-const strong = (password) => {
+/**
+ * Check if a password is strong enough
+ * The Password must contain at least 1 lowercase** and 1 uppercase alphabetical character,
+ at least 1 numeric character**, at least 1 special character and it must be 8 characters or longer.
+ * @param {string} password - The password to check
+ * @returns {number} returns a number (1 or 0)
+ */
+
+const strong = async (password) => {
     if (typeof password !== 'string') {
-        return Promise.reject('You must provide a string as an argument')
+        throw 'You must provide a string as an argument';
     }
 
     password = password.trim()
@@ -54,6 +68,15 @@ const strong = (password) => {
 
 }
 
+
+/**
+ * Check if a password is super-strong
+ * The password will pass both pwnd and strong tests
+ * If the pwnd test fails for some reason you'll receive
+ * a warning but the test will pass to the strong test
+ * @param {string} password - The password to check
+ * @returns {boolean} returns a boolean
+ */
 const super_strong = async (password) => {
     if (typeof password !== 'string') {
         return Promise.reject('You must provide a string as an argument')
