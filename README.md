@@ -64,7 +64,7 @@ If the Password isn't found when calling the API
 That doesn't necessarily mean it's a good password,
  merely that it's not indexed on this API
  
-**BUT** Testing the password against **613,584,246** real leaked passowrds
+**BUT** Testing the password against **613,584,246** real leaked passwords
 is a good **INDICATOR** that the password is somewhat **SECURE**
 
 
