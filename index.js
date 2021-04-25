@@ -13,8 +13,6 @@ const pwnd = async (password) => {
     if (typeof password !== 'string') {
         return Promise.reject('You must provide a string as an argument')
     }
-    // Delete any spaces from both sides
-    password = password.trim()
 
     // Hash the password
     const hashed_pwd = await crypto.createHash('sha1').update(password).digest('hex');
@@ -58,8 +56,6 @@ const strong = async (password) => {
         throw 'You must provide a string as an argument';
     }
 
-    password = password.trim()
-
     // RegEx of a strong password
     const strongReg = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
     const match = password.match(strongReg);
@@ -81,8 +77,6 @@ const super_strong = async (password) => {
     if (typeof password !== 'string') {
         return Promise.reject('You must provide a string as an argument')
     }
-
-    password = password.trim()
 
     const leaked = await pwnd(password)
         .catch(() => {
