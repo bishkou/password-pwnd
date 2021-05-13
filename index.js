@@ -64,7 +64,6 @@ const strong = async (password) => {
 
 }
 
-
 /**
  * Check if a password is super-strong
  * The password will pass both pwnd and strong tests
